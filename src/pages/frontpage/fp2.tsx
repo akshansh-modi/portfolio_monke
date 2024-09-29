@@ -43,7 +43,7 @@ const FP2 = () => {
 
   const names = [
     { firstName: "Akshansh", lastName: "Modi", language: "English" }, // English
-    { firstName: "أكشانش", lastName: "مودي", language: "Arabic" }, // Arabic
+
     { firstName: "악샨시", lastName: "모디", language: "Korean" }, // Korean
   ];
   return (
