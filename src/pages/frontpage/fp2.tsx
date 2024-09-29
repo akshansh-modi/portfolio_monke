@@ -43,11 +43,8 @@ const FP2 = () => {
 
   const names = [
     { firstName: "Akshansh", lastName: "Modi", language: "English" }, // English
-    { firstName: "अक्षांश", lastName: "मोदी", language: "Hindi" }, // Hindi/Marathi
-    { firstName: "Акшанш", lastName: "Моди", language: "Russian" }, // Russian
     { firstName: "أكشانش", lastName: "مودي", language: "Arabic" }, // Arabic
     { firstName: "악샨시", lastName: "모디", language: "Korean" }, // Korean
-    
   ];
   return (
     <div className="flex flex-col md:flex-row items-center justify-center h-screen bg-gray-100">
