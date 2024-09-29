@@ -1,4 +1,4 @@
-import { FrontPage,FP2 } from "./pages/exports"
+import {FP2 } from "./pages/exports"
 
 export default function App() {
   return (
