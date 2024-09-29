@@ -4,7 +4,6 @@ import monke from "../../assets/monke.svg";
 import "./frontpage.css";
 import NameComponent from "../../components/name_component";
 
-
 const particleOptions: ParticleOptions = {
   filter: ({ x, y, image }) => {
     const pixel = image.get(x, y);
@@ -48,7 +47,7 @@ const FP2 = () => {
     { firstName: "Акшанш", lastName: "Моди", language: "Russian" }, // Russian
     { firstName: "أكشانش", lastName: "مودي", language: "Arabic" }, // Arabic
     { firstName: "악샨시", lastName: "모디", language: "Korean" }, // Korean
-    { firstName: "อักชานช์", lastName: "โมดี", language: "Thai" } // Thai
+    
   ];
   return (
     <div className="flex flex-col md:flex-row items-center justify-center h-screen bg-gray-100">
@@ -64,9 +63,8 @@ const FP2 = () => {
           backgroundColor=""
         />
       </div>
-    
-   <NameComponent names={names} />
-      
+
+      <NameComponent names={names} />
     </div>
   );
 };

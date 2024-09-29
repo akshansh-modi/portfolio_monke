@@ -2,32 +2,25 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 interface NameComponentProps {
-  names: { firstName: string; lastName: string; language: string }[];
-}
-
-const ScrambleText: React.FC<{
-  text: string;
-  className?: string;
-  language: string;
-}> = ({ text, className, language }) => {
-  // Define language-specific animation effects
-  const scaleEffect = language === "Hindi" ? 0.7 : 0.9; // Adjusted scale for Hindi
-    const initialScale = language === "Hindi" ? 0.6 : 0.8; // Adjusted initial scale for Hindi
-  return (
-    <motion.p
-      initial={{ opacity: 0, scale: initialScale }}
-      animate={{ opacity: 1, scale: scaleEffect }}
-      transition={{
-        duration: 0.5,
-        type: "spring",
-        stiffness: 100,
-      }}
-      className={`prevent-select ${className}`}
-    >
-      {text}
-    </motion.p>
-  );
-};
+    names: { firstName: string; lastName: string; language: string }[];
+  }
+const ScrambleText: React.FC<{ text: string; className?: string }> = ({
+  text,
+  className,
+}) => (
+  <motion.p
+    initial={{ opacity: 0, scale: 0.8 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{
+      duration: 0.5,
+      type: "spring",
+      stiffness: 100,
+    }}
+    className={`prevent-select ${className}`}
+  >
+    {text}
+  </motion.p>
+);
 
 const NameComponent: React.FC<NameComponentProps> = ({ names }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -72,12 +65,10 @@ const NameComponent: React.FC<NameComponentProps> = ({ names }) => {
       <ScrambleText
         text={firstName}
         className="md:text-[200px] text-9xl font-karantina text-gray-800"
-        language={names[currentIndex].language}
       />
       <ScrambleText
         text={lastName}
         className="md:text-[180px] text-8xl font-karantina text-gray-800"
-        language={names[currentIndex].language}
       />
     </div>
   );
