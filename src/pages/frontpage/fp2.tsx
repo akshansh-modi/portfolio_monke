@@ -1,4 +1,3 @@
-import React from "react";
 import ParticleImage, { forces, ParticleOptions } from "react-particle-image";
 import monke from "../../assets/monke.svg";
 
@@ -23,7 +22,6 @@ const motionForce = (x: number, y: number) => {
 const FP2 = () => {
   return (
     <div className="flex flex-col md:flex-row items-center justify-center h-screen ">
-      
       <div id="monke_svg" className="flex-1 flex justify-center items-center">
         <ParticleImage
           src={monke}
