@@ -1,5 +1,7 @@
 import ParticleImage, { forces, ParticleOptions } from "react-particle-image";
 import monke from "../../assets/monke.svg";
+import { useState, useEffect } from 'react';
+
 
 const particleOptions: ParticleOptions = {
   filter: ({ x, y, image }) => {
@@ -20,24 +22,48 @@ const motionForce = (x: number, y: number) => {
 };
 
 const FP2 = () => {
+    const [isLaptopScreen,setIsLaptopScreen]=useState(true)
+    useEffect(() => {
+        const handleResize = () => {
+          const screenWidth = window.innerWidth;
+          // Example: Show the component only on medium screens and up (Tailwind's `md` breakpoint is 768px)
+          if (screenWidth >= 768) {
+            setIsLaptopScreen(true);
+          } else {
+            setIsLaptopScreen(false);
+          }
+        };
+    
+        // Set initial visibility
+        handleResize();
+    
+        // Add resize event listener
+        window.addEventListener('resize', handleResize);
+    
+        // Cleanup on component unmount
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
   return (
     <div className="flex flex-col md:flex-row items-center justify-center h-screen ">
-      <div id="monke_svg" className="flex-1 flex justify-center items-center">
+     
+    
+        <div id="monke_svg" className="flex-1 flex justify-center items-center">
         <ParticleImage
           src={monke}
           scale={1}
           entropy={20}
-          maxParticles={8000}
+          maxParticles={isLaptopScreen?8000:4000}
           particleOptions={particleOptions}
           mouseMoveForce={motionForce}
           touchMoveForce={motionForce}
           backgroundColor="white"
         />
       </div>
+    
 
       <div id="name_component" className="flex-1 text-center">
-        <p className="text-4xl font-bold text-gray-800">AKSHANSH</p>
-        <p className="text-4xl font-bold text-gray-800">MODI</p>
+        <p className="md:text-[200px]  text-9xl font-karantina text-gray-800">AKSHANSH</p>
+        <p className=" md:text-[180px] text-8xl font-karantina text-gray-800">MODI</p>
       </div>
     </div>
   );
