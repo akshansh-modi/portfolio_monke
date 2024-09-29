@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import ParticleImage, { forces, ParticleOptions } from "react-particle-image";
 import monke from "../../assets/monke.svg";
 
