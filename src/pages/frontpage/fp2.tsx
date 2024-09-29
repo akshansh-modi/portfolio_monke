@@ -1,7 +1,6 @@
+import React, { useState, useEffect } from "react";
 import ParticleImage, { forces, ParticleOptions } from "react-particle-image";
 import monke from "../../assets/monke.svg";
-import { useState, useEffect } from 'react';
-
 
 const particleOptions: ParticleOptions = {
   filter: ({ x, y, image }) => {
@@ -12,7 +11,7 @@ const particleOptions: ParticleOptions = {
     const pixel = image.get(x, y);
     return `rgba(${pixel.r}, ${pixel.g}, ${pixel.b}, ${pixel.a / 255})`; // Preserve original RGB color
   },
-  radius: () => Math.random() * 3 + 0.5, // Radius of each particle
+  radius: () => Math.random() * ((window.innerWidth >= 768)?3:7) + 0.5, // Radius of each particle
   mass: () => 40,
   friction: () => 0.15,
 };
@@ -22,48 +21,40 @@ const motionForce = (x: number, y: number) => {
 };
 
 const FP2 = () => {
-    const [isLaptopScreen,setIsLaptopScreen]=useState(true)
-    useEffect(() => {
-        const handleResize = () => {
-          const screenWidth = window.innerWidth;
-          // Example: Show the component only on medium screens and up (Tailwind's `md` breakpoint is 768px)
-          if (screenWidth >= 768) {
-            setIsLaptopScreen(true);
-          } else {
-            setIsLaptopScreen(false);
-          }
-        };
-    
-        // Set initial visibility
-        handleResize();
-    
-        // Add resize event listener
-        window.addEventListener('resize', handleResize);
-    
-        // Cleanup on component unmount
-        return () => window.removeEventListener('resize', handleResize);
-      }, []);
+  const [isLaptopScreen, setIsLaptopScreen] = useState(window.innerWidth >= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLaptopScreen(window.innerWidth >= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center h-screen ">
-     
-    
-        <div id="monke_svg" className="flex-1 flex justify-center items-center">
+    <div className="flex flex-col md:flex-row items-center justify-center h-screen bg-gray-100">
+      <div id="monke_svg" className="flex-1 flex justify-center items-center">
         <ParticleImage
           src={monke}
           scale={1}
           entropy={20}
-          maxParticles={isLaptopScreen?8000:4000}
+          maxParticles={isLaptopScreen ? 4000 : 2000}
           particleOptions={particleOptions}
           mouseMoveForce={motionForce}
           touchMoveForce={motionForce}
-          backgroundColor="white"
+          backgroundColor=""
         />
       </div>
-    
-
       <div id="name_component" className="flex-1 text-center">
-        <p className="md:text-[200px]  text-9xl font-karantina text-gray-800">AKSHANSH</p>
-        <p className=" md:text-[180px] text-8xl font-karantina text-gray-800">MODI</p>
+        <p className="md:text-[200px] text-9xl font-karantina text-gray-800">
+          AKSHANSH
+        </p>
+        <p className="md:text-[180px] text-8xl font-karantina text-gray-800">
+          MODI
+        </p>
       </div>
     </div>
   );
