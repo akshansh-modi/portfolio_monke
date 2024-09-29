@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ParticleImage, { forces, ParticleOptions } from "react-particle-image";
 import monke from "../../assets/monke.svg";
+import "./frontpage.css";
 
 const particleOptions: ParticleOptions = {
   filter: ({ x, y, image }) => {
@@ -52,10 +53,10 @@ const FP2 = () => {
         />
       </div>
       <div id="name_component" className="flex-1 text-center">
-        <p className="md:text-[200px] text-9xl font-karantina text-gray-800">
+        <p className="md:text-[200px] text-9xl font-karantina text-gray-800 prevent-select">
           AKSHANSH
         </p>
-        <p className="md:text-[180px] text-8xl font-karantina text-gray-800">
+        <p className="md:text-[180px] text-8xl font-karantina text-gray-800 prevent-select">
           MODI
         </p>
       </div>
