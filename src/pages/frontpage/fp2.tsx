@@ -11,14 +11,17 @@ const particleOptions: ParticleOptions = {
     const pixel = image.get(x, y);
     return `rgba(${pixel.r}, ${pixel.g}, ${pixel.b}, ${pixel.a / 255})`; // Preserve original RGB color
   },
-  radius: () => Math.random() * ((window.innerWidth >= 768)?3:7) + 0.5, // Radius of each particle
+  radius: () => Math.random() * ((window.innerWidth >= 768)?4:6) + 0.5, // Radius of each particle
   mass: () => 40,
   friction: () => 0.15,
 };
 
 const motionForce = (x: number, y: number) => {
-  return forces.disturbance(x, y, 20); // Increase disturbance for stronger repulsion
+  return forces.disturbance(x, y, 40); // Increase disturbance for stronger repulsion
 };
+const touchForce=(x:number,y:number)=>{
+  return forces.disturbance(x, y, 20);
+}
 
 const FP2 = () => {
   const [isLaptopScreen, setIsLaptopScreen] = useState(window.innerWidth >= 768);
@@ -32,7 +35,7 @@ const FP2 = () => {
 
     // Cleanup on component unmount
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [isLaptopScreen]);
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-center h-screen bg-gray-100">
@@ -41,10 +44,10 @@ const FP2 = () => {
           src={monke}
           scale={1}
           entropy={20}
-          maxParticles={isLaptopScreen ? 4000 : 2000}
+          maxParticles={isLaptopScreen ? 4000 : 3000}
           particleOptions={particleOptions}
           mouseMoveForce={motionForce}
-          touchMoveForce={motionForce}
+          touchMoveForce={touchForce}
           backgroundColor=""
         />
       </div>
