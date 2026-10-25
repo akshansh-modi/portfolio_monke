@@ -1,0 +1,8 @@
+{
+  // static site only: Workers serves the Vite build, no Worker script
+  "name": "portfolio-monke",
+  "compatibility_date": "2026-10-25",
+  "assets": {
+    "directory": "./dist"
+  }
+}

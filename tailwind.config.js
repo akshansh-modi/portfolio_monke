@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        karantina: ['Karantina', 'sans-serif'],
+        
       },
     },
   },
