@@ -117,7 +117,10 @@ export default function MonkeCanvas() {
     const onMove = (e: PointerEvent) => move(e.clientX, e.clientY);
     const onTouch = (e: TouchEvent) => { const t = e.touches[0]; if (t) move(t.clientX, t.clientY); };
     const onLeave = () => { Object.assign(mouse, { x: -9999, y: -9999, vx: 0, vy: 0, on: false }); };
-    const onDown = (e: PointerEvent) => { const [x, y] = pos(e.clientX, e.clientY); bursts.push({ x, y }); };
+    const onDown = (e: PointerEvent) => {
+      if (e.pointerType === "touch") return; // touch gets the flow only, no boop burst
+      const [x, y] = pos(e.clientX, e.clientY); bursts.push({ x, y });
+    };
     c.addEventListener("pointermove", onMove);
     c.addEventListener("touchmove", onTouch, { passive: true });
     c.addEventListener("pointerleave", onLeave);

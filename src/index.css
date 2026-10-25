@@ -138,3 +138,6 @@ a.card:hover { transform: translate(-3px, -3px) rotate(-0.6deg); box-shadow: 9px
   .stat-n { flex: 0 0 3.2em; }
   .exp-role { font-size: 21px; }
 }
+
+/* touch screens: no boop, so no "click to boop" label */
+@media (hover: none) { .stage-tag { display: none; } }
