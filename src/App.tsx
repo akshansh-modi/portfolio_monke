@@ -117,7 +117,7 @@ export default function App() {
           </div>
           <div className="span2 about">
             <p className="about-lead">I'm Akshansh, a developer who's happiest somewhere between the database and the browser. Clients hire me when they need something built end to end, or when an existing system needs to get faster and less scary to change.</p>
-            <p className="body">You get a working build every week, updates in plain English, and code your next developer won't curse at. I'm based in Gurugram, India, and I once took 1st runner-up out of 40+ teams at Hackstreet 2.0.</p>
+            <p className="body">You get a working build every week, updates in plain English, and code your next developer won't curse at. I'm based in Gurugram, India. </p>
           </div>
         </section>
 
